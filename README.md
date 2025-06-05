@@ -40,3 +40,26 @@ pip install fastapi uvicorn
 ```
 uvicorn main:app --reload
 ```
+
+
+### 🧠 Core Features to Learn
+- @app.get(), @app.post() – Define endpoints
+- Query, path, and body parameters
+- Request validation using Pydantic models
+- Handling form data and file uploads
+- Async routes (async def)
+- Dependency Injection
+- Background tasks
+- WebSockets
+- Middleware
+- Authentication (JWT/OAuth2)
+- Using databases (e.g., SQLModel, Tortoise, SQLAlchemy)
+
+### 💡 Ideal For
+- APIs for Machine Learning models
+- Backend for Web/Mobile Apps
+- Real-time apps (chat, notifications)
+- Fast Prototyping
+
+### ✅ Summary
+FastAPI is a modern Python framework ideal for building high-performance APIs, with great developer experience, built-in async support, and automatic documentation. It's faster and more feature-rich than Flask, and perfect for modern backend needs.
