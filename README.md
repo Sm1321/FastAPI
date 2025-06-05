@@ -18,7 +18,5 @@ This is a simple FastAPI project to help you get started with building APIs usin
 
 uvicorn main:app --reload
 
-app: FastAPI instance inside that file
-
 --reload: Auto-reloads when code changes (development mode) 
 ```
