@@ -11,12 +11,8 @@ This is a simple FastAPI project to help you get started with building APIs usin
 
 ---
 
-## 📦 Setup Instructions
+``` pip install fastapi uvicorn
+fastapi: The core web framework.
 
-### 1. Clone the repository (if using Git)
-```bash
-
-uvicorn main:app --reload
-
---reload: Auto-reloads when code changes (development mode) 
+uvicorn: A lightweight, fast ASGI server that runs your FastAPI app. 
 ```
