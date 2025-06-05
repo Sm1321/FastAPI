@@ -16,16 +16,17 @@ FastAPI is a modern, high-performance web framework for building APIs with Pytho
 
 ---
 
-## ⚙️ FastAPI vs Flask
+## ⚖️ FastAPI vs Flask
 
 | Feature              | FastAPI                    | Flask                       |
 |----------------------|----------------------------|-----------------------------|
-| Speed                | Very Fast (ASGI)           | Slower (WSGI)               |
-| Async Support        | Built-in                   | Not native                  |
-| Type Hints           | Enforced                   | Optional                    |
-| Validation           | Automatic via Pydantic     | Manual or plugins           |
-| Auto Docs            | Built-in Swagger / ReDoc   | Requires plugins            |
-| WebSockets           | Supported                  | Not native                  |
+| Speed                | ⚡ Very Fast (ASGI)         | 🐢 Slower (WSGI)            |
+| Async Support        | ✅ Built-in                 | ⚠️ Not native                |
+| Type Hints           | ✅ Enforced                 | ⚠️ Optional                  |
+| Validation           | ✅ Automatic (Pydantic)     | ❌ Manual or plugins         |
+| Auto Docs            | ✅ Swagger & ReDoc built-in | ❌ Requires plugins          |
+| WebSockets           | ✅ Supported                | ❌ Not built-in              |
+| Ideal For            | Modern APIs, ML, async apps | Simple/sync apps             |
 
 ---
 
