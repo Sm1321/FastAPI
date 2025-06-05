@@ -41,7 +41,12 @@ pip install fastapi uvicorn
 ```
 uvicorn main:app --reload
 ```
+#### Open in browser:
+- 🌐 http://127.0.0.1:8000 → Home
 
+- 📘 http://127.0.0.1:8000/docs → Swagger UI
+
+- 📙 http://127.0.0.1:8000/redoc → ReDoc UI
 
 ### 🧠 Core Features to Learn
 - @app.get(), @app.post() – Define endpoints
