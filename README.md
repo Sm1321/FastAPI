@@ -1,2 +1,2 @@
 # FastAPI
-- Learning Tutorial from onile
+- Learning Tutorial from online and youtube
