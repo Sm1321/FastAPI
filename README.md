@@ -31,13 +31,12 @@ FastAPI is a modern, high-performance web framework for building APIs with Pytho
 
 ## 🧰 Installation & Setup
 
-### 1. Create a virtual environment
-```bash
-python -m venv fastapi_env
-
 
 ```
 pip install fastapi uvicorn
 - fastapi: The core web framework.
 - uvicorn: A lightweight, fast ASGI server that runs your FastAPI app. 
+```
+```
+uvicorn main:app --reload
 ```
