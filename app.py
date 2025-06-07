@@ -1,7 +1,9 @@
 from fastapi import FastAPI,Path,HTTPException,Query
+from fastapi.responses import JSONResponse
 import json
-from pydantic import BaseModel,
-from typing import Annotated,Optional,List,Dict,Field,Literal 
+from pydantic import BaseModel,computed_field
+from pydantic import Field
+from typing import Annotated,Optional,List,Dict,Literal 
 
 
 class Patient(BaseModel):
@@ -12,7 +14,23 @@ class Patient(BaseModel):
     age : Annotated[int,Field(...,gt =0,lt = 120,decription = 'Age of the patient')]
     height :Annotated[float,Field(...,gt = 0,description = 'Height of the pateinet on mtrs]')] 
     weight:Annotated[float,Field(...,gt = 0,description = 'Weight of the patinet in kgs')]
-    
+    #Create a computed filed for the BMI 
+    @computed_field
+    @property
+    def bmi(self)->float:
+        bmi = round(self.weight/(self.height ** 2),2)
+        return bmi 
+    ##create a compute field for the verdict
+    @computed_field 
+    @property
+    def verdict(self)->str:
+        if self.bmi < 18.5 :
+            return "Under Weight"
+        elif self.bmi  < 25:
+            return "Normal"
+        else :
+            return 'Obesity'
+
 
 
 #####################################################################
@@ -23,6 +41,13 @@ def load_data():
         data = json.load(f)
     return data
 
+
+
+#save the data into then Json file
+def save_data(data):
+    with open('patients.json','w') as f:
+        json.dump(data,f)
+    
 
 @app.get('/')
 def hello():
@@ -79,3 +104,21 @@ def sort_patients(sort_by: str = Query(..., description='Sort on the basis of he
     sorted_data = sorted(data.values(), key=lambda x: x.get(sort_by, 0), reverse=sort_order)
 
     return sorted_data
+
+
+
+@app.post('/create')
+def create_post(patinet:Patient): #patinet is of type Patinet
+    #load existing Data 
+    data = load_data()
+    #check the data is there already exists
+    if patinet.id in data:
+        raise HTTPException(status_code = 400,detail = "Patient Already exists")
+    #if not exists , add the new patinet
+    data[patinet.id] = patinet.model_dump(exclude = ['id'])
+
+    #save the data into json file
+    save_data(data)
+    #Create Is Done
+    return JSONResponse(status_code = 202,content = {'message':'Patinet Created Sucessfully'}) 
+
