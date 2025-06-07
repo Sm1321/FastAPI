@@ -69,3 +69,9 @@ uvicorn main:app --reload
 
 ### ✅ Summary
 FastAPI is a modern Python framework ideal for building high-performance APIs, with great developer experience, built-in async support, and automatic documentation. It's faster and more feature-rich than Flask, and perfect for modern backend needs.
+
+-----------------------------------------------------------
+### In this Above files
+- Learned about the CRUD Methods from youtube
+- PUT,DELETE,UPDATE,CREATE 
+- Learned the Pydantic
