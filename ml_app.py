@@ -23,7 +23,6 @@ tier_2_cities = [
 
 # pydantic model to validate incoming data
 class UserInput(BaseModel):
-
     age: Annotated[int, Field(..., gt=0, lt=120, description='Age of the user')]
     weight: Annotated[float, Field(..., gt=0, description='Weight of the user')]
     height: Annotated[float, Field(..., gt=0, lt=2.5, description='Height of the user')]
