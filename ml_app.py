@@ -1,20 +1,16 @@
 from fastapi import FastAPI
-from pydantic import BaseModel,Field,computed_field
 from fastapi.responses import JSONResponse
-from typing import Literal,Annotated
-import pickle 
+from pydantic import BaseModel, Field, computed_field
+from typing import Literal, Annotated
+import pickle
 import pandas as pd
 
-
-## Import the ML Model
-with open('model.pkl','rb') as f:
+# import the ml model
+with open('model.pkl', 'rb') as f:
     model = pickle.load(f)
 
-
-## Fast API
 app = FastAPI()
 
-#City tier list
 tier_1_cities = ["Mumbai", "Delhi", "Bangalore", "Chennai", "Kolkata", "Hyderabad", "Pune"]
 tier_2_cities = [
     "Jaipur", "Chandigarh", "Indore", "Lucknow", "Patna", "Ranchi", "Visakhapatnam", "Coimbatore",
@@ -27,6 +23,7 @@ tier_2_cities = [
 
 # pydantic model to validate incoming data
 class UserInput(BaseModel):
+
     age: Annotated[int, Field(..., gt=0, lt=120, description='Age of the user')]
     weight: Annotated[float, Field(..., gt=0, description='Weight of the user')]
     height: Annotated[float, Field(..., gt=0, lt=2.5, description='Height of the user')]
@@ -35,12 +32,12 @@ class UserInput(BaseModel):
     city: Annotated[str, Field(..., description='The city that the user belongs to')]
     occupation: Annotated[Literal['retired', 'freelancer', 'student', 'government_job',
        'business_owner', 'unemployed', 'private_job'], Field(..., description='Occupation of the user')]
-     #Adding the computed fild for the bmi
+    #Adding the Computeed feilds for the Feature Engineering
     @computed_field
     @property
-    def bmi(self)->float:
-        return self.weight /(self.height ** 2)
-    #Adding the computed fild for the lifestyle
+    def bmi(self) -> float:
+        return self.weight/(self.height**2)
+    
     @computed_field
     @property
     def lifestyle_risk(self) -> str:
@@ -50,7 +47,7 @@ class UserInput(BaseModel):
             return "medium"
         else:
             return "low"
-    #Adding the computed field for the 
+        
     @computed_field
     @property
     def age_group(self) -> str:
@@ -61,7 +58,7 @@ class UserInput(BaseModel):
         elif self.age < 60:
             return "middle_aged"
         return "senior"
-    #Adding the computed field for city_tier
+    
     @computed_field
     @property
     def city_tier(self) -> int:
@@ -71,22 +68,23 @@ class UserInput(BaseModel):
             return 2
         else:
             return 3
-        
- #Post Route
+
 @app.post('/predict')
-def predict_premium(data:UserInput):
-    input_df = pd.DataFrame(
-        [
-            {
-                'bmi':data.bmi,
-                'age_group':data.age_group,
-                'lifesyle_risk':data.age_group,
-                'city_tier':data.city_tier,
-                'income_lpa':data.income_lpa,
-                'occupation':data.occupation
-            }
-        ]
-    ) 
-    prediction = model.predict(input_df[0])
-    
-    return JSONResponse(status_code=200, content={'predicted_category': prediction})  
+def predict_premium(data: UserInput):
+
+    input_df = pd.DataFrame([{
+        'bmi': data.bmi,
+        'age_group': data.age_group,
+        'lifestyle_risk': data.lifestyle_risk,
+        'city_tier': data.city_tier,
+        'income_lpa': data.income_lpa,
+        'occupation': data.occupation
+    }])
+
+    prediction = model.predict(input_df)[0]
+
+    return JSONResponse(status_code=200, content={'predicted_category': prediction})
+
+
+
+
