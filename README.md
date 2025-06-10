@@ -74,3 +74,4 @@ FastAPI is a modern Python framework ideal for building high-performance APIs, w
 - Learned about the CRUD Methods from youtube
 - PUT,DELETE,UPDATE,CREATE 
 - Learned the Pydantic
+- Created a Basic project on Pydantic
