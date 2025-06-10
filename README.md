@@ -13,9 +13,7 @@ FastAPI is a modern, high-performance web framework for building APIs with Pytho
 - 🧩 **Built-in Dependency Injection** – cleaner and modular code
 - 📦 **Great for APIs** – REST, WebSockets, background tasks supported
 - ✅ **Validation** – automatic with Pydantic (JSON, forms, etc.)
-
 ---
-
 ## ⚖️ FastAPI vs Flask
 
 | Feature              | FastAPI                    | Flask                       |
@@ -65,7 +63,7 @@ uvicorn main:app --reload
 - Backend for Web/Mobile Apps
 - Real-time apps (chat, notifications)
 - Fast Prototyping
-
+- 
 ### ✅ Summary
 FastAPI is a modern Python framework ideal for building high-performance APIs, with great developer experience, built-in async support, and automatic documentation. It's faster and more feature-rich than Flask, and perfect for modern backend needs.
 
@@ -73,4 +71,9 @@ FastAPI is a modern Python framework ideal for building high-performance APIs, w
 ### In this Above files
 - Learned about the CRUD Methods from youtube
 - PUT,DELETE,UPDATE,CREATE 
+<<<<<<< HEAD
 - Learned the Pydantic .
+=======
+- Learned the Pydantic
+- Created a Basic project on Pydantic
+>>>>>>> c853896e57f731c942b438867c85ec90bc6568f3
