@@ -32,7 +32,6 @@ FastAPI is a modern, high-performance web framework for building APIs with Pytho
 
 ## 🧰 Installation & Setup
 
-
 ```
 pip install fastapi uvicorn
 - fastapi: The core web framework.
@@ -74,4 +73,4 @@ FastAPI is a modern Python framework ideal for building high-performance APIs, w
 ### In this Above files
 - Learned about the CRUD Methods from youtube
 - PUT,DELETE,UPDATE,CREATE 
-- Learned the Pydantic
+- Learned the Pydantic .
