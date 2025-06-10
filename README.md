@@ -13,7 +13,6 @@ FastAPI is a modern, high-performance web framework for building APIs with Pytho
 - 🧩 **Built-in Dependency Injection** – cleaner and modular code
 - 📦 **Great for APIs** – REST, WebSockets, background tasks supported
 - ✅ **Validation** – automatic with Pydantic (JSON, forms, etc.)
-
 ---
 ## ⚖️ FastAPI vs Flask
 
